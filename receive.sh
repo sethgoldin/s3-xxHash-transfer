@@ -1,4 +1,6 @@
-# prompt user for the name of the s3 bucket
+#!/bin/bash
+
+# Here's where the user will be prompted for the name of the S3 bucket from where the data is going to be downloaded
 
 # create a variable for the name of the s3 bucket that the user specified
 
