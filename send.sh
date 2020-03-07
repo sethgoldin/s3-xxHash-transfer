@@ -1,5 +1,13 @@
 #!/bin/bash
 
+# Lets check to make sure that mhl is properly installed https://stackoverflow.com/a/677212/
+
+command -v mhl >/dev/null 2>&1 || { echo >&2 "This script requires mhl but it does not appear to be properly installed. Aborting."; exit 1; }
+
+# Lets check to make sure that aws is properly installed https://stackoverflow.com/a/677212/
+
+command -v aws >/dev/null 2>&1 || { echo >&2 "This script requires aws but it does not appear to be properly installed. Aborting."; exit 1; }
+
 # Here's where the user is going to specify what source folder should be uploaded into S3
 
 read -e -p "From what directory do you want to upload data into S3? Please enter the absolute path and escape any spaces if necessary: " sourceLocalDirectory
