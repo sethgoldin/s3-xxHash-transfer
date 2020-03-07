@@ -1,7 +1,5 @@
 # prompt user for the name of the s3 bucket
 
-test from command line
-
 # create a variable for the name of the s3 bucket that the user specified
 
 # prompt user for the exact path into where they want the data to go
