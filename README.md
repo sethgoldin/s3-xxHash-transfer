@@ -17,8 +17,10 @@ The MHL file generated on the sending side and verified on the receiving side fu
   - The command output format set to [text](https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-output.html#text-output)
 
 ## Roadmap
-Release 0.0.1 has only been designed and tested on Linux endpoints, specifically on Fedora 31 and CentOS 7.7. However, there aren't too many dependencies, so it should work flawlessly on other major Linux distributions as well.
+Release 0.0.1 has only been designed and tested on Linux endpoints, specifically on Fedora 31 and CentOS 7.7. However, there aren't too many dependencies, so these scripts should work flawlessly on other major Linux distributions as well.
 
-macOS Catalina hasn't yet been tested, but given that this is just a `bash` script, it may work right out of the box. Any necessary modifications for macOS will be forthcoming in a future release.
+Both the MHL tool and the AWS CLI are available across Linux, macOS, and Windows, so it should be relatively straightforward to port to the other operating systems.
+
+macOS Catalina hasn't yet been tested, but given that these are just `bash` scripts, these may work right out of the box. Any necessary modifications for macOS will be forthcoming in a future release.
 
 The [Windows command shells](https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/windows-commands), both the Command shell and PowerShell, are quite a bit different than `bash`, so porting to Windows will take a bit more effort, and will probably come last.
