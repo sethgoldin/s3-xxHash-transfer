@@ -43,4 +43,4 @@ aws s3 sync "$sourceLocalDirectory" $s3BucketName &&
 
 # Once the upload has finished, let's let the user know that the data has been sealed and ingested.
 
-echo "The data from <$sourceLocalDirectory> has been sealed with xxHash checksums and and ingested into the AWS S3 bucket named <$s3BucketName>."
+echo "The data from <$sourceLocalDirectory> has been sealed with xxHash checksums and has been ingested into the AWS S3 bucket named <$s3BucketName>."
