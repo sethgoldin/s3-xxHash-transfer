@@ -8,11 +8,11 @@ command -v mhl >/dev/null 2>&1 || { echo >&2 "This script requires mhl but it do
 
 command -v aws >/dev/null 2>&1 || { echo >&2 "This script requires aws but it does not appear to be properly installed. Aborting. Please see https://aws.amazon.com/cli/ for more information."; exit 1; }
 
-# Let's have the user specify from what bucket they'll be downloading
+# Let's have the user specify from which bucket they'll be downloading
 
 read -e -p "What is the name of the AWS S3 bucket from which you'll be downloading? The name of the bucket should take the form <s3://bucket-name> with only lowercase letters and hyphens, but should use NO uppercase letters nor spaces: " s3BucketName
 
-# Let's have the user specify exactly into what directory on the local system they want the data to go
+# Let's have the user specify exactly into which directory on the local system they want the data to go
 
 read -e -p "Into which directory do you want the data to download? Please enter the absolute path and escape any spaces if necessary: " destinationLocalDirectory
 
@@ -35,7 +35,9 @@ if [ $count = 1 ];
 
 # If it does contain exactly one MHL file, we'll grab the name of that one filename and set it as the $mhlFileName variable. We'll use the `find` command https://stackoverflow.com/a/5927391/
 
-# We're going to use the `-maxdepth 1` flag to make sure that we're only grabbing the very root level of the folder, since there might be other MHL folders down in the depths of the folders for the particular camera rolls https://stackoverflow.com/a/3925376/
+# We're going to use process substitution to set the results of the `find` command to a variable, $mhlFileName https://askubuntu.com/a/1022178/ 
+
+# We're going to use the `-maxdepth 1` flag in the `find` command to make sure that we're only grabbing the very root level of the folder, since there might be other MHL folders down in the depths of the folders for the particular camera rolls https://stackoverflow.com/a/3925376/
 
 then 
 	mhlFileName=$(find $destinationLocalDirectory -maxdepth 1 -type f -name "*.mhl");
