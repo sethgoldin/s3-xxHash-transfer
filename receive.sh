@@ -24,21 +24,24 @@ aws s3 sync $s3BucketName "$destinationLocalDirectory" &&
 
 # Let's check to make sure that a .mhl file exists in the destination.
 
+cd "$destinationLocalDirectory"
+
 count=`ls -1 *.mhl 2>/dev/null | wc -l`
-if [ $count = 1 ]
+if [ $count = 1 ];
 then 
-	mhlFileName=$(find $destinationLocalDirectory -maxdepth 1 -type f -name "*.mhl")
-elif [ $count = 0 ]
+	mhlFileName=$(find $destinationLocalDirectory -maxdepth 1 -type f -name "*.mhl");
+elif [ $count = 0 ];
+then
 	echo "ERROR: The local directory does not seem to have an MHL file with which to verify the contents. The data integrity of the contents of this directory cannot be verified."; exit 1;
-elif [ $count > 1 ]
+elif [ $count > 1 ];
+then
 	echo "ERROR: There are more than one MHL files in the directory, and this script does not know which MHL to use to verify the contents of the directory. The data integrity of the contents of this directory cannot be verified."; exit 1;
 fi 
 
 # cd into the $destinationLocalDirectory and verify the MHL file
 
-cd "$destinationLocalDirectory"
 
-mhl verify -f "$mhlFileName"
+mhl verify -f "$mhlFileName" &&
 
 # Whatever the program displays will just get passed through into the script: https://unix.stackexchange.com/a/266111/
 
