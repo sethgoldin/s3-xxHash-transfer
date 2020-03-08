@@ -8,15 +8,15 @@ command -v mhl >/dev/null 2>&1 || { echo >&2 "This script requires mhl but it do
 
 command -v aws >/dev/null 2>&1 || { echo >&2 "This script requires aws but it does not appear to be properly installed. Aborting."; exit 1; }
 
-# Here's where the user is going to specify what source folder should be uploaded into S3
+# Let's have the user specify which source folder should be uploaded into S3
 
-read -e -p "From what directory do you want to upload data into S3? Please enter the absolute path and escape any spaces if necessary: " sourceLocalDirectory
+read -e -p "What directory do you want to upload into AWS S3? Please enter the absolute path and escape any spaces if necessary: " sourceLocalDirectory
 
 # Now $sourceLocalDirectory will work as the variable for the source folder from the local system that will be ingested into S3
 
 # Let's prompt the user for the name of the S3 bucket
 
-read -e -p "What should the name of the S3 bucket be? The name of the bucket should take the form: s3://bucket-name with no uppercase letters and no spaces: " s3BucketName
+read -e -p "What should the name of the S3 bucket be? The name of the bucket should take the form <s3://bucket-name> with only lowercase letters and hyphens, but should use NO uppercase letters nor spaces: " s3BucketName
 
 # Now $s3BucketName will work as the variable for the name of the S3 bucket
 
@@ -30,12 +30,13 @@ aws s3 mb $s3BucketName &&
 cd "$sourceLocalDirectory"
 
 mhl seal -t xxhash * &&
+
 # Let's sync the data from the local folder into the bucket
 
 aws s3 sync "$sourceLocalDirectory" $s3BucketName &&
 
 # Whatever the program displays will just get passed through into the script: https://unix.stackexchange.com/a/266111/
 
-# Let's let the user know that the data has been sealed and ingested.
+# Once the upload has finished, let's let the user know that the data has been sealed and ingested.
 
-echo "The data from <$sourceLocalDirectory> has been sealed with xxHash checksums and and ingested into the S3 bucket named <$s3BucketName>."
+echo "The data from <$sourceLocalDirectory> has been sealed with xxHash checksums and and ingested into the AWS S3 bucket named <$s3BucketName>."
