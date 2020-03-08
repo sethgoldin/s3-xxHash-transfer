@@ -31,9 +31,9 @@ cd "$sourceLocalDirectory"
 
 # We're putting that variable inside double quotes, just in case the path has any spaces https://stackoverflow.com/questions/43787476/how-to-add-path-with-space-in-bash-variable/#43793896
 
-mhl seal -t xxhash * &&
+mhl seal -t xxhash64 * &&
 
-# We're using the xxHash algorith specifically, because it's fast and reliable https://github.com/Cyan4973/xxHash
+# We're using the 64-bit xxHash algorith specifically, because it's fast and reliable https://github.com/Cyan4973/xxHash
 
 # Now that we've sealed the contents of the folder, let's sync the data from the local folder into the bucket https://docs.aws.amazon.com/cli/latest/reference/s3/sync.html
 
