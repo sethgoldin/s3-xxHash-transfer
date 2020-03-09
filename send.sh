@@ -10,7 +10,7 @@ command -v aws >/dev/null 2>&1 || { echo >&2 "This script requires aws but it do
 
 # Let's have the user specify which source folder should be uploaded into S3
 
-read -e -p "What directory do you want to upload into AWS S3? Please enter the absolute path and escape any spaces if necessary: " sourceLocalDirectory
+read -e -p "From which directory on your local system are you uploading into AWS S3? Please enter the absolute path and escape any spaces if necessary: " sourceLocalDirectory
 
 # Now $sourceLocalDirectory will work as the variable for the source folder from the local system that will be ingested into S3
 
