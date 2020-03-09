@@ -10,11 +10,11 @@ command -v aws >/dev/null 2>&1 || { echo >&2 "This script requires aws but it do
 
 # Let's have the user specify from which bucket they'll be downloading
 
-read -e -p "What is the name of the AWS S3 bucket from which you'll be downloading? The name of the bucket should take the form <s3://bucket-name> with only lowercase letters and hyphens, but should use NO uppercase letters nor spaces: " s3BucketName
+read -e -p "What is the name of the AWS S3 bucket from which you'll be downloading the data? The name of a bucket takes the form <s3://bucket-name> with only lowercase letters and hyphens, but uses NO uppercase letters nor spaces: " s3BucketName
 
 # Let's have the user specify exactly into which directory on the local system they want the data to go
 
-read -e -p "Into which directory do you want the data to download? Please enter the absolute path and escape any spaces if necessary: " destinationLocalDirectory
+read -e -p "Into which local directory on your system are you downloading the data? Please enter the absolute path and escape any spaces if necessary: " destinationLocalDirectory
 
 # Now $destinationLocalDirectory will work as the variable for the destination folder on the local system into which the data will go
 
@@ -37,7 +37,7 @@ if [ $count = 1 ];
 
 # We're going to use process substitution to set the results of the `find` command to a variable, $mhlFileName https://askubuntu.com/a/1022178/ 
 
-# We're going to use the `-maxdepth 1` flag in the `find` command to make sure that we're only grabbing the very root level of the folder, since there might be other MHL folders down in the depths of the folders for the particular camera rolls https://stackoverflow.com/a/3925376/
+# We're going to use the `-maxdepth 1` flag in the `find` command to make sure that we're only grabbing the very root level of the folder, since there might be other MHL files down in the depths of subdirectories https://stackoverflow.com/a/3925376/
 
 then 
 	mhlFileName=$(find $destinationLocalDirectory -maxdepth 1 -type f -name "*.mhl");
@@ -52,7 +52,7 @@ then
 
 elif [ $count > 1 ];
 then
-	echo "ERROR: There are more than one MHL files in the directory, and this script does not know which MHL to use to verify the contents of the directory. The data integrity of the contents of this directory cannot be verified."; exit 1;
+	echo "ERROR: There are more than one MHL files in the directory, so this script does not know which MHL to use to verify the contents of the directory. The data integrity of the contents of this directory cannot be verified."; exit 1;
 fi 
 
 # Let's go ahead and verify the MHL file we found
