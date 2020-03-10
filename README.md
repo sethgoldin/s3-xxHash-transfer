@@ -10,7 +10,8 @@ The MHL file generated on the sending side and verified on the receiving side fu
 
 ## System requirements
 - The [MHL tool](https://github.com/pomfort/mhl-tool) should be installed into your `$PATH`. On CentOS 7.7 and Fedora 31, after compiling from source so that `mhl` will call the properly installed versions of the OpenSSL libraries, it is [recommended](https://unix.stackexchange.com/questions/8656/usr-bin-vs-usr-local-bin-on-linux/8658#8658) to manually move the `mhl` binary into `/usr/local/bin`, since the program will not be managed by the distribution's package manager.
-- The [`.pkg` installer from Pomfort](http://download.pomfort.com/mhl-tool.zip) will install a precompiled binary for macOS into `/usr/local/bin`, which is included by default in macOS's `$PATH`.
+- The [`.pkg` installer from Pomfort]() will install a precompiled binary for macOS into `/usr/local/bin`, which is included by default in macOS's `$PATH`.
+- On Windows, download and extract [the precompiled binary from Pomfort](http://download.pomfort.com/mhl-tool.zip), and then copy or move `mhl.exe` into `C:\Windows\System32\`, which should already be included by default in the `Path` system environment variables.
 - The [AWS CLI](https://aws.amazon.com/cli/) should be installed and configured on both endpoints, with:
   - The sending IAM user having at least full S3 write access on the AWS account
   - The receiving IAM user having at least full S3 read access on the AWS account
@@ -18,10 +19,11 @@ The MHL file generated on the sending side and verified on the receiving side fu
   - The command output format set to [text](https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-output.html#text-output)
 
 ## Compatible platforms
-Release 0.0.2 has tested on Linux and macOS endpoints, specifically on:
+Release 0.0.3 has tested on Linux and macOS endpoints, specifically on:
 - Fedora 31
 - CentOS 7.7
 - macOS Catalina 10.15.3
+- Windows 10 1909
 
 There aren't too many dependencies, so these scripts seem like they should work flawlessly on other major Linux distributions as well, though no other distributions have been tested.
 
