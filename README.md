@@ -6,12 +6,12 @@ Included in this repository are shell scripts that glue together the [MHL tool](
 1. On the "source" computer:
    1. Depending on your OS:
       1. On macOS or Linux, run `$ sh send.sh`. `sudo` privilege is _not_ required.
-      1. On Windows, run `send.ps1` via PowerShell.
+      1. On Windows, run `PS> send.ps1`.
    1. The "send" script will prompt for the source destination directory, "seal" the contents of the directory with 64-bit xxHash checksums, prompt for the name of a new S3 bucket, automatically make that bucket, and then ingest the entire directory into the bucket.
 1. On the "destination" computer:
    1. Depending on your OS:
       1. On macOS or Linux, run `$ sh receive.sh`. `sudo` privilege is _not_ required.
-      1. On Windows, run `receive.ps1` via PowerShell.
+      1. On Windows, run `PS> receive.ps1`.
    1. The "receive" script will prompt for the name of the S3 bucket that had been created by the "send" script, prompt for the local directory path into where the data will be downloaded, and then will automatically download all data from the S3 bucket and verify the 64-bit xxHash checksums for every single file.
 
 The MHL file generated on the sending side and verified on the receiving side functions as as a kind of manifest for the data, which ensures end-to-end data integrity. These scripts use the extremely fast [64-bit xxHash hashing algorithm](https://github.com/Cyan4973/xxHash).
