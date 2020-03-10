@@ -8,7 +8,25 @@ if (Get-Command aws -errorAction Stop)
 
 # Let's have the user specify which source folder should be uploaded into S3
 
-$sourceLocalDirectory = Read-Host "From which directory on your local system are you uploading into AWS S3? Please enter the absolute path and escape any spaces if necessary" 
+Function Get-Folder($initialDirectory)
+
+{
+    [System.Reflection.Assembly]::LoadWithPartialName("System.windows.forms")|Out-Null
+
+    $foldername = New-Object System.Windows.Forms.FolderBrowserDialog
+    $foldername.Description = "Select a folder"
+    $foldername.rootfolder = "MyComputer"
+
+    if($foldername.ShowDialog() -eq "OK")
+    {
+        $folder += $foldername.SelectedPath
+    }
+    return $folder
+}
+
+echo "From which directory on your local system are you uploading into AWS S3?"
+
+$sourceLocalDirectory = Get-Folder
 
 # Now $sourceLocalDirectory will work as the variable for the source folder from the local system that will be ingested into S3
 
@@ -22,18 +40,30 @@ $s3BucketName = Read-Host "What should the name of the AWS S3 bucket be? The nam
 
 aws s3 mb $s3BucketName;
 
+if ($LASTEXITCODE -ne 0)
+    { Exit-PSSession }
+
 # Let's cd into the source directory, and then execute mhl seal for the whole directory, with the xxHash algorithm, which is nice and fast
 #	N.B. mhl must be run from inside the source directory, so best practice is to cd in to the directory right within the shell script itself: https://stackoverflow.com/a/10566581/
 
 cd $sourceLocalDirectory;
 
+if ($LASTEXITCODE -ne 0)
+    { Exit-PSSession }
+
 mhl seal -t xxhash64 *;
+
+if ($LASTEXITCODE -ne 0)
+    { Exit-PSSession }
 
 # We're using the 64-bit xxHash algorithm specifically, because it's fast and reliable https://github.com/Cyan4973/xxHash
 
 # Now that we've sealed the contents of the folder, let's sync the data from the local folder into the bucket https://docs.aws.amazon.com/cli/latest/reference/s3/sync.html# Now that we've sealed the contents of the folder, let's sync the data from the local folder into the bucket https://docs.aws.amazon.com/cli/latest/reference/s3/sync.html# Now that we've sealed the contents of the folder, let's sync the data from the local folder into the bucket https://docs.aws.amazon.com/cli/latest/reference/s3/sync.html
 
 aws s3 sync "$sourceLocalDirectory" $s3BucketName;
+
+if ($LASTEXITCODE -ne 0)
+    { Exit-PSSession }
 
 # Once the upload has finished, let's let the user know that the data has been sealed and ingested.
 
