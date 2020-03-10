@@ -33,7 +33,7 @@ cd "$sourceLocalDirectory"
 
 mhl seal -t xxhash64 * &&
 
-# We're using the 64-bit xxHash algorith specifically, because it's fast and reliable https://github.com/Cyan4973/xxHash
+# We're using the 64-bit xxHash algorithm specifically, because it's fast and reliable https://github.com/Cyan4973/xxHash
 
 # Now that we've sealed the contents of the folder, let's sync the data from the local folder into the bucket https://docs.aws.amazon.com/cli/latest/reference/s3/sync.html
 
