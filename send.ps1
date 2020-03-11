@@ -1,10 +1,13 @@
+echo "s3-xxHash-transfer send.ps1 version 0.0.4"
+
 # Lets check to make sure that mhl is properly installed
-if (Get-Command mhl -errorAction Stop)
-{}
+
+if ((Get-Command mhl.exe -ErrorAction SilentlyContinue) -eq $null)
+    { throw "This script requires mhl.exe but it does not appear to be properly installed. Aborting. Please see https://mediahashlist.org/mhl-tool/ for more information." }
 
 # Lets check to make sure that aws is properly installed
-if (Get-Command aws -errorAction Stop)
-{}
+if ((Get-Command aws.exe -ErrorAction SilentlyContinue) -eq $null)
+    { throw "This script requires aws.exe but it does not appear to be properly installed. Aborting. Please see https://aws.amazon.com/cli/ for more information." }
 
 # Let's have the user specify which source folder should be uploaded into S3
 
