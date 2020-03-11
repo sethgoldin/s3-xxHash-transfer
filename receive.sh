@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "s3-xxHash-transfer receive.sh version 0.0.4"
+echo "s3-xxHash-transfer receive.sh version 0.0.5"
 
 # Lets check to make sure that mhl is properly installed https://stackoverflow.com/a/677212/
 
@@ -60,6 +60,8 @@ fi
 # Let's go ahead and verify the MHL file we found
 
 # We're incuding the variable in double quotes, in case there are spaces in the filename https://stackoverflow.com/questions/43787476/how-to-add-path-with-space-in-bash-variable/#43793896
+
+echo "Verifying the contents of the directory via 64-bit xxHash checksums. Please wait..."
 
 mhl verify -f "$mhlFileName" &&
 
