@@ -1,5 +1,7 @@
 #!/bin/bash
 
+echo "s3-xxHash-transfer send.sh version 0.0.4"
+
 # Lets check to make sure that mhl is properly installed https://stackoverflow.com/a/677212/
 
 command -v mhl >/dev/null 2>&1 || { echo >&2 "This script requires mhl but it does not appear to be properly installed. Aborting. Please see https://mediahashlist.org/mhl-tool/ for more information."; exit 1; }
