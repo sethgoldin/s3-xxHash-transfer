@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "s3-xxHash-transfer send.sh version 0.0.4"
+echo "s3-xxHash-transfer send.sh version 0.0.5"
 
 # Lets check to make sure that mhl is properly installed https://stackoverflow.com/a/677212/
 
@@ -33,6 +33,8 @@ cd "$sourceLocalDirectory"
 
 # We're putting that variable inside double quotes, just in case the path has any spaces https://stackoverflow.com/questions/43787476/how-to-add-path-with-space-in-bash-variable/#43793896
 
+echo "Sealing the contents of the directory with 64-bit xxHash checksums. Please wait..."
+
 mhl seal -t xxhash64 * &&
 
 # We're using the 64-bit xxHash algorithm specifically, because it's fast and reliable https://github.com/Cyan4973/xxHash
@@ -45,4 +47,4 @@ aws s3 sync "$sourceLocalDirectory" $s3BucketName &&
 
 # Once the upload has finished, let's let the user know that the data has been sealed and ingested.
 
-echo "The data from <$sourceLocalDirectory> has been sealed with xxHash checksums and has been ingested into the AWS S3 bucket named <$s3BucketName>."
+echo "The data from <$sourceLocalDirectory> has been sealed with 64-bit xxHash checksums and has been ingested into the AWS S3 bucket named <$s3BucketName>."

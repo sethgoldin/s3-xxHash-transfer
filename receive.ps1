@@ -1,4 +1,4 @@
-﻿echo "s3-xxHash-transfer receive.ps1 version 0.0.4"
+﻿echo "s3-xxHash-transfer receive.ps1 version 0.0.5"
 
 # Lets check to make sure that mhl is properly installed
 
@@ -58,7 +58,7 @@ elseif (((Get-ChildItem -Path $destinationLocalDirectory -filter *.mhl | Measure
 # If there's exactly one MHL file, let's grab the name of it and store that into a variable, and then verify the MHL file we found. Once the download has finished and the MHL file has been verified, let's let the user know that the data has been downloaded and verified.
 
 else
-    { $mhlFileName = gci *.mhl; mhl verify -f $mhlFileName;
+    { $mhlFileName = gci *.mhl; echo "Verifying the contents of the directory via 64-bit xxHash checksums. Please wait..." ; mhl verify -f $mhlFileName;
     if ($LASTEXITCODE -ne 0)
     { Exit-PSSession }
     else
