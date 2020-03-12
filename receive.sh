@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "s3-xxHash-transfer receive.sh version 0.0.5"
+echo "s3-xxHash-transfer receive.sh version 0.0.6"
 
 # Lets check to make sure that mhl is properly installed https://stackoverflow.com/a/677212/
 
@@ -42,7 +42,7 @@ if [ $count = 1 ];
 # We're going to use the `-maxdepth 1` flag in the `find` command to make sure that we're only grabbing the very root level of the folder, since there might be other MHL files down in the depths of subdirectories https://stackoverflow.com/a/3925376/
 
 then 
-	mhlFileName=$(find $destinationLocalDirectory -maxdepth 1 -type f -name "*.mhl");
+	mhlFileName=$(find "$destinationLocalDirectory" -maxdepth 1 -type f -name "*.mhl");
 
 # If there are no MHL files in this directory, we'll throw an error.
 
