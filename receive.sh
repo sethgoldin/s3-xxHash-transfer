@@ -42,7 +42,7 @@ if [ $count = 1 ];
 # We're going to use the `-maxdepth 1` flag in the `find` command to make sure that we're only grabbing the very root level of the folder, since there might be other MHL files down in the depths of subdirectories https://stackoverflow.com/a/3925376/
 
 then 
-	mhlFileName=$(find $destinationLocalDirectory -maxdepth 1 -type f -name "*.mhl");
+	mhlFileName=$(find "$destinationLocalDirectory" -maxdepth 1 -type f -name "*.mhl");
 
 # If there are no MHL files in this directory, we'll throw an error.
 
