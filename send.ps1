@@ -73,3 +73,5 @@ if ($LASTEXITCODE -ne 0)
 # Once the upload has finished, let's let the user know that the data has been sealed and ingested.
 
 echo "The data from <$sourceLocalDirectory> has been sealed with 64-bit xxHash checksums and has been ingested into the AWS S3 bucket named <$s3BucketName>."
+
+Read-Host -Prompt "Press the Enter key to exit"
