@@ -1,4 +1,4 @@
-﻿echo "s3-xxHash-transfer receive.ps1 version 0.0.5"
+﻿echo "s3-xxHash-transfer receive.ps1 version 0.0.6"
 
 # Lets check to make sure that mhl is properly installed
 
@@ -48,12 +48,12 @@ cd $destinationLocalDirectory
 # If there are no MHL files in this directory, we'll throw an error.
 
 if (((Get-ChildItem -Path $destinationLocalDirectory -filter *.mhl | Measure-Object | Select-Object -expandProperty Count) -eq 0))
-    {echo "ERROR: The local directory does not seem to have an MHL file with which to verify the contents. The data integrity of the contents of this directory cannot be verified."; Exit-PSSession}
+    { throw "ERROR: The local directory does not seem to have an MHL file with which to verify the contents. The data integrity of the contents of this directory cannot be verified." }
 
 # If there are more than one MHL files in the directory, we'll throw an error, because we don't know which MHL file to check.
 
 elseif (((Get-ChildItem -Path $destinationLocalDirectory -filter *.mhl | Measure-Object | Select-Object -expandProperty Count) -gt 1))
-    { echo "ERROR: There are more than one MHL files in the directory, so this script does not know which MHL to use to verify the contents of the directory. The data integrity of the contents of this directory cannot be verified." ; Exit-PSSession}
+    { throw "ERROR: There are more than one MHL files in the directory, so this shell script does not know which MHL to use to verify the contents of the directory. The data integrity of the contents of this directory cannot be verified." }
 
 # If there's exactly one MHL file, let's grab the name of it and store that into a variable, and then verify the MHL file we found. Once the download has finished and the MHL file has been verified, let's let the user know that the data has been downloaded and verified.
 
