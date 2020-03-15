@@ -63,3 +63,5 @@ else
     { Exit-PSSession }
     else
     { echo "The data from the AWS S3 bucket named <$s3BucketName> has been downloaded into $destinationLocalDirectory and has been verified." }}
+   
+Read-Host -Prompt "Press the Enter key to exit"   
