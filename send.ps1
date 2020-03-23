@@ -1,4 +1,4 @@
-echo "s3-xxHash-transfer send.ps1 version 0.0.6"
+echo "s3-xxHash-transfer send.ps1 version 1.0.0"
 
 # Lets check to make sure that mhl is properly installed
 
