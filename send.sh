@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "s3-xxHash-transfer send.sh version 0.0.6"
+echo "s3-xxHash-transfer send.sh version 1.0.0"
 
 # Lets check to make sure that mhl is properly installed https://stackoverflow.com/a/677212/
 
