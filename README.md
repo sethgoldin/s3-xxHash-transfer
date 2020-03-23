@@ -1,4 +1,4 @@
-# s3-xxHash-transfer
+# S3 xxHash Transfer
 Included in this repository are shell scripts that glue together the [MHL tool](https://github.com/pomfort/mhl-tool) and the [AWS CLI](https://docs.aws.amazon.com/cli/index.html). This allows for a workflow that can transfer enormous amounts of data through an [S3 bucket](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingBucket.html) with extremely fast checksum verification. These scripts ensure bulletproof data integrity, verifying every single bit, with blazingly fast speed afforded by 64-bit xxHash and AWS S3.
 
 ## Workflow
