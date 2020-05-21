@@ -30,7 +30,7 @@ The MHL file generated on the sending side and verified on the receiving side fu
 Release 1.0.0 has tested on Linux, macOS, and Windows, specifically on:
 - Fedora 31
 - CentOS 7.7
-- macOS Catalina 10.15.3
+- macOS Catalina 10.15.4
 - Windows 10 1909
 
 There aren't too many dependencies, so these scripts seem like they should work flawlessly on other major Linux distributions as well, though no other distributions have been tested.
