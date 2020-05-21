@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "s3-xxHash-transfer receive.sh version 1.0.0"
+echo "s3-xxHash-transfer receive.sh version 2.0.0-alpha"
 
 # Lets check to make sure that mhl is properly installed https://stackoverflow.com/a/677212/
 
@@ -10,9 +10,9 @@ command -v mhl >/dev/null 2>&1 || { echo >&2 "This script requires mhl but it do
 
 command -v aws >/dev/null 2>&1 || { echo >&2 "This script requires aws but it does not appear to be properly installed. Aborting. Please see https://aws.amazon.com/cli/ for more information."; exit 1; }
 
-# Let's have the user specify from which bucket they'll be downloading
+# Let's have the user specify from where on S3 they'll be downloading
 
-read -e -p "What is the name of the AWS S3 bucket from which you'll be downloading the data? The name of a bucket takes the form <s3://bucket-name> with only lowercase letters and hyphens, but uses NO uppercase letters nor spaces: " s3BucketName
+read -e -p "From where on S3 will you be downloading? Enter an S3 URL: " s3url
 
 # Let's have the user specify exactly into which directory on the local system they want the data to go
 
@@ -20,9 +20,9 @@ read -e -p "Into which local directory on your system are you downloading the da
 
 # Now $destinationLocalDirectory will work as the variable for the destination folder on the local system into which the data will go
 
-# Let's now sync from the S3 bucket to the local system https://docs.aws.amazon.com/cli/latest/reference/s3/sync.html
+# Let's now sync from S3 to the local system https://docs.aws.amazon.com/cli/latest/reference/s3/sync.html
 
-aws s3 sync $s3BucketName "$destinationLocalDirectory" &&
+aws s3 sync $s3url "$destinationLocalDirectory" &&
 
 # Let's check to make sure that a .mhl file exists in the destination.
 
@@ -61,7 +61,7 @@ fi
 
 # We're incuding the variable in double quotes, in case there are spaces in the filename https://stackoverflow.com/questions/43787476/how-to-add-path-with-space-in-bash-variable/#43793896
 
-echo "Verifying the contents of the directory via 64-bit xxHash checksums. Please wait..."
+echo "Verifying the 64-bit xxHash checksums. Please wait..."
 
 mhl verify -f "$mhlFileName" &&
 
@@ -69,4 +69,4 @@ mhl verify -f "$mhlFileName" &&
 
 # Once the download has finished and the MHL file has been verified, let's let the user know that the data has been downloaded and verified.
 
-echo "The data from the AWS S3 bucket named <$s3BucketName> has been downloaded into $destinationLocalDirectory and has been verified."
+echo "The data from <$s3url> has been downloaded into $destinationLocalDirectory and has been verified."
