@@ -1,4 +1,4 @@
-echo "s3-xxHash-transfer receive.ps1 version 2.0.0-alpha"
+echo "s3-xxHash-transfer receive.ps1 version 2.0.0-alpha.1"
 
 # Lets check to make sure that mhl is properly installed
 
@@ -11,7 +11,7 @@ if ((Get-Command aws.exe -ErrorAction SilentlyContinue) -eq $null)
 
 # Let's have the user specify from where on S3 they'll be downloading
 
-$s3url = Read-Host "From where on S3 will you be downloading? Enter an S3 URL:"
+$s3url = Read-Host "From where on S3 will you be downloading? Enter an S3 URL"
 
 # Let's have the user specify exactly into which directory on the local system they want the data to go
 
