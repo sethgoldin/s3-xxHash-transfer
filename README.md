@@ -27,7 +27,7 @@ The MHL file generated on the sending side and verified on the receiving side fu
   - The command output format set to [text](https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-output.html#text-output)
 
 ## Tested platforms
-Release 2.0.0-alpha has been tested on Linux, macOS, and Windows, specifically on:
+Release 2.0.0-alpha.1 has been tested on Linux, macOS, and Windows, specifically on:
 - Fedora 32
 - CentOS 7.8.2003
 - macOS Catalina 10.15.4
