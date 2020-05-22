@@ -7,7 +7,7 @@ Included in this repository are shell scripts that glue together the [MHL tool](
    1. Depending on your OS:
       1. On macOS or Linux, run `$ sh send.sh`. `sudo` privilege is _not_ required.
       1. On Windows, run `PS> send.ps1`.
-   1. The "send" script will prompt for the source directory, "seal" the contents of the directory with 64-bit xxHash checksums, prompt for the S3 URL, and then ingest the entire directory into the bucket.
+   1. The "send" script will prompt for the source directory, "seal" the contents of the directory with 64-bit xxHash checksums, prompt for an S3 URL, and then ingest the entire directory into the bucket.
 1. On the "destination" computer:
    1. Depending on your OS:
       1. On macOS or Linux, run `$ sh receive.sh`. `sudo` privilege is _not_ required.
