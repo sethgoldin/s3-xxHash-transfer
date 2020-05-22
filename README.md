@@ -12,7 +12,7 @@ Included in this repository are shell scripts that glue together the [MHL tool](
    1. Depending on your OS:
       1. On macOS or Linux, run `$ sh receive.sh`. `sudo` privilege is _not_ required.
       1. On Windows, run `PS> receive.ps1`.
-   1. The "receive" script will prompt for the S3 URL that had been specified by the "send" script, prompt for the local directory path into where the data will be downloaded, and then will automatically download the specified data from the S3 bucket and verify its 64-bit xxHash checksums.
+   1. The "receive" script will prompt for the S3 URL specified earlier by the "send" script, prompt for the local directory path into where the data will be downloaded, and then will automatically download the specified data from the S3 bucket and verify their 64-bit xxHash checksums.
 
 The MHL file generated on the sending side and verified on the receiving side functions as as a kind of manifest for the data, which ensures end-to-end data integrity. These scripts use the extremely fast [64-bit xxHash hashing algorithm](https://github.com/Cyan4973/xxHash).
 
