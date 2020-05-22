@@ -28,7 +28,7 @@ The MHL file generated on the sending side and verified on the receiving side fu
 
 ## Tested platforms
 Release 2.0.0-alpha has been tested on Linux, macOS, and Windows, specifically on:
-- Fedora 31
+- Fedora 32
 - CentOS 7.8.2003
 - macOS Catalina 10.15.4
 - Windows 10 1909
