@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "s3-xxHash-transfer receive.sh version 2.0.0-beta"
+echo "s3-xxHash-transfer receive.sh version 2.0.0"
 
 # Lets check to make sure that mhl is properly installed https://stackoverflow.com/a/677212/
 
@@ -69,4 +69,4 @@ mhl verify -f "$mhlFileName" &&
 
 # Once the download has finished and the MHL file has been verified, let's let the user know that the data has been downloaded and verified.
 
-echo "The data from <$s3url> has been downloaded into $destinationLocalDirectory and has been verified."
+echo "Success! The data from <$s3url> has been downloaded into $destinationLocalDirectory and has been verified."
