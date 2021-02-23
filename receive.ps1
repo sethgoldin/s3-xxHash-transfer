@@ -63,6 +63,6 @@ else
     if ($LASTEXITCODE -ne 0)
     { Exit-PSSession }
     else
-    { echo "The data from <$s3url> has been downloaded into $destinationLocalDirectory and has been verified." }}
+    { echo "Success! The data from <$s3url> has been downloaded into $destinationLocalDirectory and has been verified." }}
    
 Read-Host -Prompt "Press the Enter key to exit"   
