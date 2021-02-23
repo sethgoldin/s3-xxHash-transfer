@@ -1,4 +1,4 @@
-echo "s3-xxHash-transfer receive.ps1 version 2.0.0-beta"
+echo "s3-xxHash-transfer receive.ps1 version 2.0.0"
 
 
 # Lets check to make sure that mhl is properly installed
@@ -63,6 +63,6 @@ else
     if ($LASTEXITCODE -ne 0)
     { Exit-PSSession }
     else
-    { echo "The data from <$s3url> has been downloaded into $destinationLocalDirectory and has been verified." }}
+    { echo "Success! The data from <$s3url> has been downloaded into $destinationLocalDirectory and has been verified." }}
    
-Read-Host -Prompt "Press the Enter key to exit"   
+Read-Host -Prompt "Press the Enter key to exit"

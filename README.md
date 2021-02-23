@@ -27,11 +27,11 @@ The MHL file generated on the sending side and verified on the receiving side fu
   - The command output format set to [text](https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-output.html#text-output)
 
 ## Tested platforms
-Release 2.0.0-beta has been tested on Linux, macOS, and Windows, specifically on:
-- Fedora 32
-- CentOS 7.8.2003
-- macOS Catalina 10.15.4
-- Windows 10 1909
+Release 2.0.0 has been tested on Linux, macOS, and Windows, specifically on:
+- Fedora 32 and higher
+- CentOS 7.8.2003 and higher
+- macOS Catalina 10.15.4 and higher
+- Windows 10 1909 and higher
 
 There aren't too many dependencies, so these scripts seem like they should work flawlessly on other major Linux distributions as well, though no other distributions have been tested.
 

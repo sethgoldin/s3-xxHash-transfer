@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "s3-xxHash-transfer send.sh version 2.0.0-beta"
+echo "s3-xxHash-transfer send.sh version 2.0.0"
 
 # Lets check to make sure that mhl is properly installed https://stackoverflow.com/a/677212/
 
@@ -43,4 +43,4 @@ aws s3 sync "$sourceLocalDirectory" $s3url &&
 
 # Once the upload has finished, let's let the user know that the data has been sealed and ingested.
 
-echo "The data from <$sourceLocalDirectory> has been sealed with 64-bit xxHash checksums and has been ingested into AWS S3 at <$s3url>."
+echo "Success! The data from <$sourceLocalDirectory> has been sealed with 64-bit xxHash checksums and has been ingested into AWS S3 at <$s3url>."
