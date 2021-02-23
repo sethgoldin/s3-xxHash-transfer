@@ -65,4 +65,4 @@ else
     else
     { echo "Success! The data from <$s3url> has been downloaded into $destinationLocalDirectory and has been verified." }}
    
-Read-Host -Prompt "Press the Enter key to exit"   
+Read-Host -Prompt "Press the Enter key to exit"
